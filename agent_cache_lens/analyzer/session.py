@@ -131,9 +131,13 @@ def compare_two_sessions(file_a: str, file_b: str, label_a: str = "Native Claude
     res_b = audit_session(file_b, name=label_b)
 
     if res_b.metrics.cachex > 0:
-        ratio_str = f"**{round(res_a.metrics.cachex / res_b.metrics.cachex, 2)}x higher**"
+        ratio = round(res_a.metrics.cachex / res_b.metrics.cachex, 2)
+        ratio_str = f"**{ratio}x higher**"
+        gap_str = f"`{ratio}x` gap"
     else:
+        ratio = 0.0
         ratio_str = "**significantly higher** (target had 0% cache hit rate)"
+        gap_str = "target 0% cache"
 
     cost_diff = round(res_b.metrics.calculate_actual_cost() - res_a.metrics.calculate_actual_cost(), 4)
 
@@ -147,7 +151,7 @@ def compare_two_sessions(file_a: str, file_b: str, label_a: str = "Native Claude
         "| Metric | " + label_a + " | " + label_b + " | Delta |",
         "| :--- | :---: | :---: | :---: |",
         f"| **Total Turns** | `{res_a.metrics.total_turns}` | `{res_b.metrics.total_turns}` | - |",
-        f"| **CacheX (cache_read / write+input)** | `**{res_a.metrics.cachex}x**` | `**{res_b.metrics.cachex}x**` | `{ratio}x` gap |",
+        f"| **CacheX (cache_read / write+input)** | `**{res_a.metrics.cachex}x**` | `**{res_b.metrics.cachex}x**` | {gap_str} |",
         f"| **Cache Hit Rate** | `{res_a.metrics.cache_hit_rate}%` | `{res_b.metrics.cache_hit_rate}%` | `{round(res_a.metrics.cache_hit_rate - res_b.metrics.cache_hit_rate, 1)}%` |",
         f"| **Cache Read Tokens** | `{res_a.metrics.cache_read_tokens:,}` | `{res_b.metrics.cache_read_tokens:,}` | - |",
         f"| **Cache Write Tokens** | `{res_a.metrics.cache_write_tokens:,}` | `{res_b.metrics.cache_write_tokens:,}` | - |",
