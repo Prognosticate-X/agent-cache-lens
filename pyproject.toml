@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-cache-lens"
+version = "1.0.0"
+authors = [
+  { name = "Prognosticate X" },
+]
+description = "Zero-dependency Prompt Cache wire sniffer, forensic divergence analyzer, and guard for AI Agents."
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+[project.scripts]
+agent-cache-lens = "agent_cache_lens.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agent_cache_lens*"]

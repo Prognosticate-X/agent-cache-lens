@@ -1,0 +1,80 @@
+[
+  {
+    "system": "You are a senior systems engineer. Current timestamp: 2026-11-03T13:40:01Z",
+    "tools": [
+      {
+        "name": "read_file",
+        "description": "Reads full content of a file",
+        "parameters": {"properties": {"path": {"type": "string"}}, "required": ["path"], "type": "object"}
+      },
+      {
+        "name": "write_file",
+        "description": "Writes full content of a file",
+        "parameters": {"properties": {"content": {"type": "string"}, "path": {"type": "string"}}, "required": ["path", "content"], "type": "object"}
+      }
+    ],
+    "messages": [
+      {"role": "user", "content": "Please inspect the codebase architecture."}
+    ],
+    "usage": {
+      "input_tokens": 120,
+      "cache_creation_input_tokens": 8500,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 450
+    }
+  },
+  {
+    "system": "You are a senior systems engineer. Current timestamp: 2026-11-03T13:40:15Z",
+    "tools": [
+      {
+        "name": "write_file",
+        "description": "Writes full content of a file",
+        "parameters": {"properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["content", "path"], "type": "object"}
+      },
+      {
+        "name": "read_file",
+        "description": "Reads full content of a file",
+        "parameters": {"properties": {"path": {"type": "string"}}, "required": ["path"], "type": "object"}
+      }
+    ],
+    "messages": [
+      {"role": "user", "content": "Please inspect the codebase architecture."},
+      {"role": "assistant", "content": "I will read the main file to inspect the project."},
+      {"role": "user", "content": "Now check the network configuration."}
+    ],
+    "usage": {
+      "input_tokens": 8620,
+      "cache_creation_input_tokens": 8920,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 380
+    }
+  },
+  {
+    "system": "You are a senior systems engineer. Current timestamp: 2026-11-03T13:40:30Z",
+    "tools": [
+      {
+        "name": "read_file",
+        "description": "Reads full content of a file",
+        "parameters": {"properties": {"path": {"type": "string"}}, "required": ["path"], "type": "object"}
+      },
+      {
+        "name": "write_file",
+        "description": "Writes full content of a file",
+        "parameters": {"properties": {"content": {"type": "string"}, "path": {"type": "string"}}, "required": ["path", "content"], "type": "object"}
+      }
+    ],
+    "messages": [
+      {"role": "user", "content": "Please inspect the codebase architecture."},
+      {"role": "assistant", "content": "I will read the main file to inspect the project."},
+      {"role": "user", "content": "Now check the network configuration."},
+      {"role": "assistant", "content": "Network routing rules are verified."},
+      {"role": "user", "content": "Run the integration benchmark."}
+    ],
+    "usage": {
+      "input_tokens": 9200,
+      "cache_creation_input_tokens": 9400,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 510
+    }
+  }
+]
